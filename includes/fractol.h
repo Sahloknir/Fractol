@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/11 20:12:29 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/12 14:24:27 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include <stdio.h>
 
+# define ABS(value) value < 0 ? -value : value
 # define MLX data->mlx_ptr
 # define WIN data->win_ptr
 # define WIN_W data->win_w
@@ -81,6 +82,7 @@ void		fractol(int mode, t_data *data);
 int			refresh_expose(t_data * data);
 void		move_img(int key, t_data *data);
 t_color		*init_colors(t_data *data);
-char		*ft_ftoa(float nb);
+
+//char		*ft_ftoa(float nb);
 
 #endif

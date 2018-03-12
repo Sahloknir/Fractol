@@ -6,11 +6,11 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 21:26:38 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/11 13:43:12 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/12 14:17:21 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fractol.h"
+#include "../includes/fractol.h"
 
 void	draw_mandelbrot(float c_r, float c_i, t_data *data)
 {
@@ -53,8 +53,8 @@ void	draw_julia(float x, float y, t_data *data)
 	float		c_r;
 	float		c_i;
 
-	c_r = -0.8;
-	c_i = 0.156;
+	c_r = MOUSE_X / ZOOM_X + X_MIN;
+	c_i = MOUSE_Y / ZOOM_Y + Y_MIN;
 	z_r = x / ZOOM_X + X_MIN;
 	z_i = y / ZOOM_Y + Y_MIN;
 	iter = 0;

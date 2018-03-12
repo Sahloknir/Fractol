@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 19:31:21 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/11 20:53:01 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/12 14:09:22 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ int		ftoa_malloc_size(int nb)
 	return (i + 1);
 }
 
-int		find_dot(float nb, int *round)
-{
-	int		dot;
-
-	return (dot);
-}
-
 char	*ft_ftoa(float nb)
 {
 	int		round;
@@ -43,7 +36,12 @@ char	*ft_ftoa(float nb)
 
 	round = (int)nb;
 	mult = 1;
-	c = find_dot(nb, &round);
+	while (round != (int)nb)
+	{
+		c++;
+		nb *= 10;
+		round = (int)nb;
+	}
 	len = ftoa_malloc_size(round);
 	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);

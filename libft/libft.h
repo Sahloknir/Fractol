@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:48:16 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/10 18:36:23 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/12 13:40:45 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "includes/get_next_line.h"
 
 typedef struct		s_list
 {
