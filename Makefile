@@ -6,7 +6,7 @@
 #    By: axbal <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/23 14:54:13 by axbal             #+#    #+#              #
-#    Updated: 2018/03/12 14:36:31 by axbal            ###   ########.fr        #
+#    Updated: 2018/03/13 11:51:15 by axbal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCDIR = sources
 SRCS = colors.c		\
 	   put_pixel.c	\
 	   utility.c	\
+	   bind_funcs.c	\
 	   fractol.c	\
 	   main.c		\
 

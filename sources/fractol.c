@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 21:26:38 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/12 14:17:21 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/13 15:42:33 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_mandelbrot(float c_r, float c_i, t_data *data)
 	iter = 0;
 	z_r = 0;
 	z_i = 0;
-	max_iter = 100;
+	max_iter = 50;
 	while (iter < max_iter && z_r * z_r + z_i * z_i < 4)
 	{
 		tmp = z_r;
@@ -58,7 +58,7 @@ void	draw_julia(float x, float y, t_data *data)
 	z_r = x / ZOOM_X + X_MIN;
 	z_i = y / ZOOM_Y + Y_MIN;
 	iter = 0;
-	max_iter = 100;
+	max_iter = 50;
 	while (iter < max_iter && z_r * z_r + z_i * z_i < 4)
 	{
 		tmp = z_r;
@@ -103,7 +103,7 @@ void	fractol(int mode, t_data *data)
 		x = 0;
 		while (x < WIN_W)
 		{
-			draw_julia(x, y, data);
+			draw_mandelbrot(x, y, data);
 			x++;
 		}
 		y++;

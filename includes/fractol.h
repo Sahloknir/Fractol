@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/12 14:24:27 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/13 16:41:45 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define Y_MAX data->y_max
 # define ZOOM_X data->zoom_x
 # define ZOOM_Y data->zoom_y
+# define ZOOM data->zoom
 # define COLORS data->colors
 # define NB_COLORS data->nb_colors
 # define MOUSE_X data->mouse_x
@@ -70,6 +71,7 @@ typedef struct		s_data
 	int				y_o;
 	float			zoom_x;
 	float			zoom_y;
+	float			zoom;
 	t_color			*colors;
 	int				nb_colors;
 	int				mouse_x;
@@ -81,7 +83,10 @@ int			redirect_key(int key, t_data *data);
 void		fractol(int mode, t_data *data);
 int			refresh_expose(t_data * data);
 void		move_img(int key, t_data *data);
+int			track_mouse(int x, int y, t_data *data);
+int			red_cross(int key);
 t_color		*init_colors(t_data *data);
+int			zoom_in(int button, int x, int y, t_data *data);
 
 //char		*ft_ftoa(float nb);
 
