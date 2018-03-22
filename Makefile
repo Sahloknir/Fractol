@@ -6,19 +6,24 @@
 #    By: axbal <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/23 14:54:13 by axbal             #+#    #+#              #
-#    Updated: 2018/03/13 11:51:15 by axbal            ###   ########.fr        #
+#    Updated: 2018/03/22 17:03:59 by axbal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRCDIR = sources
-SRCS = colors.c		\
-	   put_pixel.c	\
-	   utility.c	\
-	   bind_funcs.c	\
-	   fractol.c	\
-	   main.c		\
+SRCS = colors.c			\
+	   color_schemes.c	\
+	   put_pixel.c		\
+	   utility.c		\
+	   bind_funcs.c		\
+	   zoom.c			\
+	   fractol.c		\
+	   mandelbrot.c		\
+	   julia.c			\
+	   burningship.c	\
+	   main.c			\
 
 OBJDIR = obj
 OBJS = $(SRCS:.c=.o)

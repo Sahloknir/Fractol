@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/13 16:41:45 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/22 17:05:44 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
-
-# include <stdio.h>
+# include <math.h>
 
 # define ABS(value) value < 0 ? -value : value
 # define MLX data->mlx_ptr
@@ -34,13 +33,19 @@
 # define X_MAX data->x_max
 # define Y_MIN data->y_min
 # define Y_MAX data->y_max
-# define ZOOM_X data->zoom_x
-# define ZOOM_Y data->zoom_y
+# define J_R data->j_r
+# define J_I data->j_i
+# define MODEL data->model
+# define MUTATE data->mutate
 # define ZOOM data->zoom
 # define COLORS data->colors
 # define NB_COLORS data->nb_colors
+# define SCHEME data->color_scheme
 # define MOUSE_X data->mouse_x
 # define MOUSE_Y data->mouse_y
+# define MAX_ITER data->max_iter
+# define D_ITER data->d_iter
+
 
 typedef struct		s_color
 {
@@ -67,13 +72,16 @@ typedef struct		s_data
 	float			x_max;
 	float			y_min;
 	float			y_max;
-	int				x_o;
-	int				y_o;
-	float			zoom_x;
-	float			zoom_y;
+	float			j_r;
+	float			j_i;
+	int				model;
+	int				mutate;
 	float			zoom;
+	int				max_iter;
+	int				d_iter;
 	t_color			*colors;
 	int				nb_colors;
+	int				color_scheme;
 	int				mouse_x;
 	int				mouse_y;
 }					t_data;
@@ -86,8 +94,25 @@ void		move_img(int key, t_data *data);
 int			track_mouse(int x, int y, t_data *data);
 int			red_cross(int key);
 t_color		*init_colors(t_data *data);
-int			zoom_in(int button, int x, int y, t_data *data);
-
-//char		*ft_ftoa(float nb);
+int			mouse_key_redirect(int button, int x, int y, t_data *data);
+void		zoom_in(int x, int y, t_data *data);
+void		zoom_out(int x, int y, t_data *data);
+void		reset_image(t_data *data);
+void		reset_pos(t_data *data);
+void		usage(void);
+int			get_options(char *str);
+int			check_name(char *str);
+void		mandelbrot(int mode, t_data *data);
+void		julia(int mode, t_data *data);
+void		burningship(int mode, t_data *data);
+void		block_mutation(t_data *data);
+float		absolute_val(float nb);
+void		change_colors(t_data *data);
+t_color		new_color(int r, int g, int b, int alpha);
+t_color		*colorscheme1(t_data *data);
+t_color		*colorscheme2(t_data *data);
+t_color		*colorscheme3(t_data *data);
+t_color		*colorscheme4(t_data *data);
+t_color		*colorscheme5(t_data *data);
 
 #endif

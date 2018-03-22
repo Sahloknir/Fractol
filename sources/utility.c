@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:15:47 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/13 12:40:37 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/22 15:29:16 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,58 @@
 
 int		refresh_expose(t_data *data)
 {
-	float	x;
-	float	y;
-
 	mlx_clear_window(MLX, WIN);
 	mlx_put_image_to_window(MLX, WIN, IMG, IMG_X, IMG_Y);
 	mlx_string_put(MLX, WIN, 5, 1, 0xDDDDDD, "X = ");
 	mlx_string_put(MLX, WIN, 5, 21, 0xDDDDDD, "Y = ");
 	mlx_string_put(MLX, WIN, 45, 1, 0xDDDDDD, ft_itoa(MOUSE_X));
 	mlx_string_put(MLX, WIN, 45, 21, 0xDDDDDD, ft_itoa(MOUSE_Y));
+	return (0);
+}
 
-	x = MOUSE_X / ZOOM_X + X_MIN;
-	y = MOUSE_Y / ZOOM_Y + Y_MIN;
-	printf("X = %lf ; Y = %lf\n", x, y);
+void	usage(void)
+{
+	ft_putstr("usage : Fractol [\"mandelbrot\" ||  \"julia\"");
+	ft_putstr(" || \"burningship\"] [option]\n");
+}
 
+void	reset_image(t_data *data)
+{
+	mlx_destroy_image(MLX, IMG);
+	IMG = mlx_new_image(MLX, WIN_W, WIN_H);
+	IMG_STR = mlx_get_data_addr(IMG, &BPP, &S_L, &ENDIAN);
+	BPP /= 8;
+}
+
+int		get_options(char *str)
+{
+	int		nb;
+
+	nb = 0;
+	if (!str)
+		return (0);
+	if (ft_strncmp(str, "-size", 5) == 0)
+		nb = ft_atoi(str + 5);
+	else
+	{
+		ft_putstr("Invalid parameter.\n");
+		return (0);
+	}
+	if (nb >= 50 && nb <= 2000)
+		return (nb);
+	ft_putstr("Size must be between 50 and 2000;\n");
+	ft_putstr("starting with default parameters.\n");
+	return (0);
+}
+
+int		check_name(char *str)
+{
+	if (ft_strcmp(str, "mandelbrot") == 0)
+		return (1);
+	else if (ft_strcmp(str, "julia") == 0)
+		return (2);
+	else if (ft_strcmp(str, "burningship") == 0)
+		return (3);
 	return (0);
 }
 
@@ -35,11 +73,20 @@ int		redirect_key(int key, t_data *data)
 {
 	if (key == 53)
 		exit(0);
-//	else if (key == 8)
-//		zoom_in(data);
+	else if (key == 15)
+		reset_pos(data);
+	else if (key == 11)
+		block_mutation(data);
 	else if (key >= 123 && key <= 126)
 		move_img(key, data);
-	else
-		ft_putnbr(key);
+	else if (key == 8)
+		change_colors(data);
 	return (key);
+}
+
+float	absolute_val(float nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }

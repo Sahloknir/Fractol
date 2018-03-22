@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 11:50:35 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/13 16:41:52 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/22 16:26:48 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 void	move_img(int key, t_data *data)
 {
+	float	tmp;
+
+	tmp = (X_MAX - X_MIN) / 10;
 	if (key == 123)
 	{
-		X_MIN -= 0.1;
-		X_MAX -= 0.1;
+		X_MIN -= tmp;
+		X_MAX -= tmp;
 	}
 	else if (key == 124)
 	{
-		X_MIN += 0.1;
-		X_MAX += 0.1;
+		X_MIN += tmp;
+		X_MAX += tmp;
 	}
 	else if (key == 126)
 	{
-		Y_MIN -= 0.1;
-		Y_MAX -= 0.1;
+		Y_MIN -= tmp;
+		Y_MAX -= tmp;
 	}
 	else if (key == 125)
 	{
-		Y_MIN += 0.1;
-		Y_MAX += 0.1;
+		Y_MIN += tmp;
+		Y_MAX += tmp;
 	}
 	fractol(2, data);
 	refresh_expose(data);
@@ -40,39 +43,47 @@ void	move_img(int key, t_data *data)
 
 int		track_mouse(int x, int y, t_data *data)
 {
-//	if (ABS(MOUSE_X - x) >= 10 || ABS(MOUSE_Y - y) >= 10 || MOUSE_X == 0
-//			|| MOUSE_Y == 0)
-//	{
+	if (MODEL == 2 && MUTATE == 1)
+	{
 		MOUSE_X = x;
 		MOUSE_Y = y;
-		fractol(3, data);
+		julia(3, data);
 		refresh_expose(data);
-//	}
+	}
 	return (0);
 }
 
-int		zoom_in(int button, int x, int y, t_data *data)
+void	reset_pos(t_data *data)
 {
-	float	x2;
-	float	y2;
-
-	x2 = x / ZOOM_X + X_MIN;
-	y2 = y / ZOOM_Y + Y_MIN;
-	button = 0;
-	ZOOM /= 1.1;
-	ZOOM_X /= 1.1;
-	ZOOM_Y /= 1.1;
-	X_MIN = x2 - ZOOM;
-	X_MAX = x2 + ZOOM;
-	Y_MIN = y2 - ZOOM;
-	Y_MAX = y2 + ZOOM;
-
-	mlx_destroy_image(MLX, IMG);
-	IMG = mlx_new_image(MLX, WIN_W, WIN_H);
-	IMG_STR = mlx_get_data_addr(IMG, &BPP, &S_L, &ENDIAN);
-	BPP /= 8;
-	fractol(2, data);
+	MAX_ITER = 50;
+	D_ITER = 50;
+	fractol(1, data);
 	refresh_expose(data);
+}
+
+void	block_mutation(t_data *data)
+{
+	MUTATE *= -1;
+}
+
+void	change_colors(t_data *data)
+{
+	if (SCHEME == 5)
+		SCHEME = 1;
+	else
+		SCHEME += 1;
+	free(COLORS);
+	COLORS = init_colors(data);
+	fractol(3, data);
+	refresh_expose(data);
+}
+
+int		mouse_key_redirect(int button, int x, int y, t_data *data)
+{
+	if (button == 4)
+		zoom_in(x, y, data);
+	if (button == 5)
+		zoom_out(x, y, data);
 	return (0);
 }
 
