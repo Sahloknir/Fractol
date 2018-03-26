@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 14:31:56 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/22 17:05:20 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:51:04 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	zoom_in(int x, int y, t_data *data)
 {
-	X_MIN = ((x / ZOOM + X_MIN) - ((ZOOM * 1.1) / 2)) + ((ZOOM * 1.1) / 2) - (x / (ZOOM * 1.1));
-	Y_MIN = ((y / ZOOM + Y_MIN) - ((ZOOM * 1.1) / 2)) + ((ZOOM * 1.1) / 2) - (y / (ZOOM * 1.1));
+	X_MIN = ((x / ZOOM + X_MIN) - ((ZOOM * 1.1) / 2)) + ((ZOOM * 1.1) / 2)
+	- (x / (ZOOM * 1.1));
+	Y_MIN = ((y / ZOOM + Y_MIN) - ((ZOOM * 1.1) / 2)) + ((ZOOM * 1.1) / 2)
+	- (y / (ZOOM * 1.1));
 	ZOOM *= 1.1;
 	X_MAX = X_MIN + (WIN_W / ZOOM);
 	Y_MAX = Y_MIN + (WIN_H / ZOOM);
@@ -29,8 +31,10 @@ void	zoom_in(int x, int y, t_data *data)
 
 void	zoom_out(int x, int y, t_data *data)
 {
-	X_MIN = ((x / ZOOM + X_MIN) - ((ZOOM / 1.1) / 2)) + ((ZOOM / 1.1) / 2) - (x / (ZOOM / 1.1));
-	Y_MIN = ((y / ZOOM + Y_MIN) - ((ZOOM / 1.1) / 2)) + ((ZOOM / 1.1) / 2) - (y / (ZOOM / 1.1));
+	X_MIN = ((x / ZOOM + X_MIN) - ((ZOOM / 1.1) / 2)) + ((ZOOM / 1.1) / 2)
+	- (x / (ZOOM / 1.1));
+	Y_MIN = ((y / ZOOM + Y_MIN) - ((ZOOM / 1.1) / 2)) + ((ZOOM / 1.1) / 2)
+	- (y / (ZOOM / 1.1));
 	ZOOM /= 1.1;
 	X_MAX = X_MIN + (WIN_W / ZOOM);
 	Y_MAX = Y_MIN + (WIN_H / ZOOM);

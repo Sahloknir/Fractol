@@ -6,20 +6,28 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:15:47 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/22 15:29:16 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:54:55 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+void	show_options(t_data *data)
+{
+	mlx_string_put(MLX, WIN, 10, 1, C, "Press 'o' to show/hide options");
+	mlx_string_put(MLX, WIN, 10, 16, C, "Press 'c' to change colors");
+	mlx_string_put(MLX, WIN, 10, 31, C, "Press 'b' to block the julia set");
+	mlx_string_put(MLX, WIN, 10, 46, C, "Press 'r' to reset your position");
+	mlx_string_put(MLX, WIN, 10, 61, C, "Use the arrow keys to move the image");
+	mlx_string_put(MLX, WIN, 10, 76, C, "Zoom in and out with the mouse wheel");
+}
+
 int		refresh_expose(t_data *data)
 {
 	mlx_clear_window(MLX, WIN);
 	mlx_put_image_to_window(MLX, WIN, IMG, IMG_X, IMG_Y);
-	mlx_string_put(MLX, WIN, 5, 1, 0xDDDDDD, "X = ");
-	mlx_string_put(MLX, WIN, 5, 21, 0xDDDDDD, "Y = ");
-	mlx_string_put(MLX, WIN, 45, 1, 0xDDDDDD, ft_itoa(MOUSE_X));
-	mlx_string_put(MLX, WIN, 45, 21, 0xDDDDDD, ft_itoa(MOUSE_Y));
+	if (OPTIONS == 1)
+		show_options(data);
 	return (0);
 }
 
@@ -51,9 +59,9 @@ int		get_options(char *str)
 		ft_putstr("Invalid parameter.\n");
 		return (0);
 	}
-	if (nb >= 50 && nb <= 2000)
+	if (nb >= 100 && nb <= 2000)
 		return (nb);
-	ft_putstr("Size must be between 50 and 2000;\n");
+	ft_putstr("Size must be between 100 and 2000;\n");
 	ft_putstr("starting with default parameters.\n");
 	return (0);
 }
@@ -81,6 +89,8 @@ int		redirect_key(int key, t_data *data)
 		move_img(key, data);
 	else if (key == 8)
 		change_colors(data);
+	else if (key == 31)
+		turn_options(data);
 	return (key);
 }
 

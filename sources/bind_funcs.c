@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 11:50:35 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/22 16:26:48 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:32:59 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ void	reset_pos(t_data *data)
 void	block_mutation(t_data *data)
 {
 	MUTATE *= -1;
+}
+
+void	turn_options(t_data *data)
+{
+	OPTIONS *= -1;
+	refresh_expose(data);
 }
 
 void	change_colors(t_data *data)

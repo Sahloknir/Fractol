@@ -6,18 +6,14 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:33:50 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/22 15:26:40 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:43:43 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-t_data		*global_init(char *name, int size)
+void		init_var(t_data *data, int size)
 {
-	t_data		*data;
-
-	if (!(data = (t_data *)malloc(sizeof(t_data) * 1)))
-		return (NULL);
 	WIN_W = 700;
 	WIN_H = 700;
 	if (size != 0)
@@ -32,7 +28,17 @@ t_data		*global_init(char *name, int size)
 	MAX_ITER = 50;
 	D_ITER = 50;
 	MUTATE = 1;
+	OPTIONS = 1;
 	SCHEME = 1;
+}
+
+t_data		*global_init(char *name, int size)
+{
+	t_data		*data;
+
+	if (!(data = (t_data *)malloc(sizeof(t_data) * 1)))
+		return (NULL);
+	init_var(data, size);
 	MLX = mlx_init();
 	WIN = mlx_new_window(MLX, WIN_W, WIN_H, name);
 	IMG = mlx_new_image(MLX, WIN_W, WIN_H);

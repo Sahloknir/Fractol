@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/22 17:05:44 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:31:07 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../mlx/mlx.h"
 # include <math.h>
 
+# define C 0xDDDDDD
 # define ABS(value) value < 0 ? -value : value
 # define MLX data->mlx_ptr
 # define WIN data->win_ptr
@@ -45,6 +46,7 @@
 # define MOUSE_Y data->mouse_y
 # define MAX_ITER data->max_iter
 # define D_ITER data->d_iter
+# define OPTIONS data->options
 
 
 typedef struct		s_color
@@ -84,6 +86,7 @@ typedef struct		s_data
 	int				color_scheme;
 	int				mouse_x;
 	int				mouse_y;
+	int				options;
 }					t_data;
 
 void		put_pixel_to_image(int x, int y, t_data *data, t_color color);
@@ -108,6 +111,7 @@ void		burningship(int mode, t_data *data);
 void		block_mutation(t_data *data);
 float		absolute_val(float nb);
 void		change_colors(t_data *data);
+void		turn_options(t_data *data);
 t_color		new_color(int r, int g, int b, int alpha);
 t_color		*colorscheme1(t_data *data);
 t_color		*colorscheme2(t_data *data);
