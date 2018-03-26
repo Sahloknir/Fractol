@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:15:47 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 15:54:55 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/26 16:25:16 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,39 +64,4 @@ int		get_options(char *str)
 	ft_putstr("Size must be between 100 and 2000;\n");
 	ft_putstr("starting with default parameters.\n");
 	return (0);
-}
-
-int		check_name(char *str)
-{
-	if (ft_strcmp(str, "mandelbrot") == 0)
-		return (1);
-	else if (ft_strcmp(str, "julia") == 0)
-		return (2);
-	else if (ft_strcmp(str, "burningship") == 0)
-		return (3);
-	return (0);
-}
-
-int		redirect_key(int key, t_data *data)
-{
-	if (key == 53)
-		exit(0);
-	else if (key == 15)
-		reset_pos(data);
-	else if (key == 11)
-		block_mutation(data);
-	else if (key >= 123 && key <= 126)
-		move_img(key, data);
-	else if (key == 8)
-		change_colors(data);
-	else if (key == 31)
-		turn_options(data);
-	return (key);
-}
-
-float	absolute_val(float nb)
-{
-	if (nb < 0)
-		return (-nb);
-	return (nb);
 }

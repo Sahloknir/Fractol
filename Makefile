@@ -6,7 +6,7 @@
 #    By: axbal <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/23 14:54:13 by axbal             #+#    #+#              #
-#    Updated: 2018/03/22 17:03:59 by axbal            ###   ########.fr        #
+#    Updated: 2018/03/26 16:27:37 by axbal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ SRCS = colors.c			\
 	   color_schemes.c	\
 	   put_pixel.c		\
 	   utility.c		\
+	   utility2.c		\
 	   bind_funcs.c		\
+	   bind_funcs2.c	\
 	   zoom.c			\
 	   fractol.c		\
 	   mandelbrot.c		\
