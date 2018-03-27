@@ -6,7 +6,7 @@
 #    By: axbal <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/23 14:54:13 by axbal             #+#    #+#              #
-#    Updated: 2018/03/26 16:27:37 by axbal            ###   ########.fr        #
+#    Updated: 2018/03/27 18:19:23 by axbal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ $(MLX):
 	make -C mlx
 
 clean:
-	rm -rf $(SRCO)
 	make -C libft clean
 	@rm -rf $(OBJDIR) 2> /dev/null || true
 

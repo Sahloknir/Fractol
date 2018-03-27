@@ -6,14 +6,14 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/27 17:54:52 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 18:33:54 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include "../mlx/mlx.h"
 # include <math.h>
 
