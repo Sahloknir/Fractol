@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 14:31:56 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 15:51:04 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 17:52:07 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	zoom_in(int x, int y, t_data *data)
 	if (D_ITER >= 50 && D_ITER < 300)
 		MAX_ITER += 2;
 	D_ITER += 2;
-	reset_image(data);
 	fractol(3, data);
 	refresh_expose(data);
 }
@@ -41,7 +40,6 @@ void	zoom_out(int x, int y, t_data *data)
 	if (D_ITER > 50 && D_ITER <= 300)
 		MAX_ITER -= 2;
 	D_ITER -= 2;
-	reset_image(data);
 	fractol(3, data);
 	refresh_expose(data);
 }

@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 16:24:55 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 16:25:07 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 17:54:20 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		redirect_key(int key, t_data *data)
 		change_colors(data);
 	else if (key == 31)
 		turn_options(data);
+	else if (key == 1)
+		switch_fractal(data);
 	return (key);
 }
 

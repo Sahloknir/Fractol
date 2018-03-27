@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:15:47 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 16:25:16 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 17:57:24 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	show_options(t_data *data)
 	mlx_string_put(MLX, WIN, 10, 16, C, "Press 'c' to change colors");
 	mlx_string_put(MLX, WIN, 10, 31, C, "Press 'b' to block the julia set");
 	mlx_string_put(MLX, WIN, 10, 46, C, "Press 'r' to reset your position");
-	mlx_string_put(MLX, WIN, 10, 61, C, "Use the arrow keys to move the image");
-	mlx_string_put(MLX, WIN, 10, 76, C, "Zoom in and out with the mouse wheel");
+	mlx_string_put(MLX, WIN, 10, 61, C, "Press 's' to switch between models");
+	mlx_string_put(MLX, WIN, 10, 76, C, "Use the arrow keys to move the image");
+	mlx_string_put(MLX, WIN, 10, 91, C, "Zoom in and out with the mouse wheel");
 }
 
 int		refresh_expose(t_data *data)
@@ -35,14 +36,6 @@ void	usage(void)
 {
 	ft_putstr("usage : Fractol [\"mandelbrot\" ||  \"julia\"");
 	ft_putstr(" || \"burningship\"] [option]\n");
-}
-
-void	reset_image(t_data *data)
-{
-	mlx_destroy_image(MLX, IMG);
-	IMG = mlx_new_image(MLX, WIN_W, WIN_H);
-	IMG_STR = mlx_get_data_addr(IMG, &BPP, &S_L, &ENDIAN);
-	BPP /= 8;
 }
 
 int		get_options(char *str)

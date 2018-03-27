@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 15:31:07 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 17:54:52 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@
 # define D_ITER data->d_iter
 # define OPTIONS data->options
 
+typedef struct		s_fdot
+{
+	float			x;
+	float			y;
+}					t_fdot;
+
+typedef struct		s_dot
+{
+	int				x;
+	int				y;
+}					t_dot;
 
 typedef struct		s_color
 {
@@ -89,34 +100,34 @@ typedef struct		s_data
 	int				options;
 }					t_data;
 
-void		put_pixel_to_image(int x, int y, t_data *data, t_color color);
-int			redirect_key(int key, t_data *data);
-void		fractol(int mode, t_data *data);
-int			refresh_expose(t_data * data);
-void		move_img(int key, t_data *data);
-int			track_mouse(int x, int y, t_data *data);
-int			red_cross(int key);
-t_color		*init_colors(t_data *data);
-int			mouse_key_redirect(int button, int x, int y, t_data *data);
-void		zoom_in(int x, int y, t_data *data);
-void		zoom_out(int x, int y, t_data *data);
-void		reset_image(t_data *data);
-void		reset_pos(t_data *data);
-void		usage(void);
-int			get_options(char *str);
-int			check_name(char *str);
-void		mandelbrot(int mode, t_data *data);
-void		julia(int mode, t_data *data);
-void		burningship(int mode, t_data *data);
-void		block_mutation(t_data *data);
-float		absolute_val(float nb);
-void		change_colors(t_data *data);
-void		turn_options(t_data *data);
-t_color		new_color(int r, int g, int b, int alpha);
-t_color		*colorscheme1(t_data *data);
-t_color		*colorscheme2(t_data *data);
-t_color		*colorscheme3(t_data *data);
-t_color		*colorscheme4(t_data *data);
-t_color		*colorscheme5(t_data *data);
+void				put_pixel_to_image(int x, int y, t_data *data, t_color c);
+int					redirect_key(int key, t_data *data);
+void				fractol(int mode, t_data *data);
+int					refresh_expose(t_data *data);
+void				move_img(int key, t_data *data);
+int					track_mouse(int x, int y, t_data *data);
+int					red_cross(int key);
+t_color				*init_colors(t_data *data);
+int					mouse_key_redirect(int button, int x, int y, t_data *data);
+void				zoom_in(int x, int y, t_data *data);
+void				zoom_out(int x, int y, t_data *data);
+void				reset_pos(t_data *data);
+void				usage(void);
+int					get_options(char *str);
+int					check_name(char *str);
+void				mandelbrot(int mode, t_data *data);
+void				julia(int mode, t_data *data);
+void				burningship(int mode, t_data *data);
+void				block_mutation(t_data *data);
+float				absolute_val(float nb);
+void				change_colors(t_data *data);
+void				turn_options(t_data *data);
+void				switch_fractal(t_data *data);
+t_color				new_color(int r, int g, int b, int alpha);
+t_color				*colorscheme1(t_data *data);
+t_color				*colorscheme2(t_data *data);
+t_color				*colorscheme3(t_data *data);
+t_color				*colorscheme4(t_data *data);
+t_color				*colorscheme5(t_data *data);
 
 #endif

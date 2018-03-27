@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:33:50 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 15:43:43 by axbal            ###   ########.fr       */
+/*   Updated: 2018/03/27 10:58:18 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_data		*global_init(char *name, int size)
 	return (data);
 }
 
-void	mainloop(char *argv, int size, int fractal)
+void		mainloop(char *argv, int size, int fractal)
 {
 	t_data	*data;
 
@@ -57,8 +57,8 @@ void	mainloop(char *argv, int size, int fractal)
 	fractol(1, data);
 	mlx_key_hook(WIN, redirect_key, data);
 	mlx_mouse_hook(WIN, mouse_key_redirect, data);
-	mlx_hook(WIN, 6, 1L<<6, track_mouse, data);
-	mlx_hook(WIN, 17, 1L<<17, red_cross, NULL);
+	mlx_hook(WIN, 6, 1L << 6, track_mouse, data);
+	mlx_hook(WIN, 17, 1L << 17, red_cross, NULL);
 	mlx_expose_hook(WIN, refresh_expose, data);
 	refresh_expose(data);
 	mlx_loop(MLX);
