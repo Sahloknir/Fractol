@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 16:24:55 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/27 17:54:20 by axbal            ###   ########.fr       */
+/*   Updated: 2018/04/19 17:23:11 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int		redirect_key(int key, t_data *data)
 		reset_pos(data);
 	else if (key == 11)
 		block_mutation(data);
-	else if (key >= 123 && key <= 126)
-		move_img(key, data);
 	else if (key == 8)
 		change_colors(data);
 	else if (key == 31)

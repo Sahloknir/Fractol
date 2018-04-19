@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:14:41 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/27 18:33:54 by axbal            ###   ########.fr       */
+/*   Updated: 2018/04/19 17:22:42 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				put_pixel_to_image(int x, int y, t_data *data, t_color c);
 int					redirect_key(int key, t_data *data);
 void				fractol(int mode, t_data *data);
 int					refresh_expose(t_data *data);
-void				move_img(int key, t_data *data);
+int					move_img(int key, t_data *data);
 int					track_mouse(int x, int y, t_data *data);
 int					red_cross(int key);
 t_color				*init_colors(t_data *data);

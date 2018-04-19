@@ -6,17 +6,17 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 11:50:35 by axbal             #+#    #+#             */
-/*   Updated: 2018/03/26 16:26:54 by axbal            ###   ########.fr       */
+/*   Updated: 2018/04/19 17:23:55 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	move_img(int key, t_data *data)
+int		move_img(int key, t_data *data)
 {
 	float	tmp;
 
-	tmp = (X_MAX - X_MIN) / 10;
+	tmp = (X_MAX - X_MIN) / 100;
 	if (key == 123)
 	{
 		X_MIN -= tmp;
@@ -39,6 +39,7 @@ void	move_img(int key, t_data *data)
 	}
 	fractol(2, data);
 	refresh_expose(data);
+	return (0);
 }
 
 int		track_mouse(int x, int y, t_data *data)
