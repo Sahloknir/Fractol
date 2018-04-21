@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 18:33:50 by axbal             #+#    #+#             */
-/*   Updated: 2018/04/19 17:22:24 by axbal            ###   ########.fr       */
+/*   Updated: 2018/04/21 17:23:00 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		init_var(t_data *data, int size)
 	SCHEME = 1;
 }
 
-t_data		*global_init(char *name, int size)
+t_data		*global_init(int size)
 {
 	t_data		*data;
 
@@ -40,7 +40,7 @@ t_data		*global_init(char *name, int size)
 		return (NULL);
 	init_var(data, size);
 	MLX = mlx_init();
-	WIN = mlx_new_window(MLX, WIN_W, WIN_H, name);
+	WIN = mlx_new_window(MLX, WIN_W, WIN_H, "fractol");
 	IMG = mlx_new_image(MLX, WIN_W, WIN_H);
 	IMG_STR = mlx_get_data_addr(IMG, &BPP, &S_L, &ENDIAN);
 	COLORS = init_colors(data);
@@ -48,11 +48,11 @@ t_data		*global_init(char *name, int size)
 	return (data);
 }
 
-void		mainloop(char *argv, int size, int fractal)
+void		mainloop(int size, int fractal)
 {
 	t_data	*data;
 
-	data = global_init(argv, size);
+	data = global_init(size);
 	MODEL = fractal;
 	fractol(1, data);
 	mlx_key_hook(WIN, redirect_key, data);
@@ -77,7 +77,7 @@ int			main(int argc, char **argv)
 		return (0);
 	}
 	if ((fractal = check_name(argv[1])) != 0)
-		mainloop(argv[1], get_options(argv[2]), fractal);
+		mainloop(get_options(argv[2]), fractal);
 	else
 		usage();
 	return (0);

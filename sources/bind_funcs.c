@@ -6,7 +6,7 @@
 /*   By: axbal <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 11:50:35 by axbal             #+#    #+#             */
-/*   Updated: 2018/04/19 17:23:55 by axbal            ###   ########.fr       */
+/*   Updated: 2018/04/21 17:05:41 by axbal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@ int		move_img(int key, t_data *data)
 	float	tmp;
 
 	tmp = (X_MAX - X_MIN) / 100;
-	if (key == 123)
+	if (key == 123 || key == 124)
 	{
-		X_MIN -= tmp;
-		X_MAX -= tmp;
-	}
-	else if (key == 124)
-	{
-		X_MIN += tmp;
-		X_MAX += tmp;
+		X_MIN += key == 123 ? -tmp : tmp;
+		X_MAX += key == 123 ? -tmp : tmp;
 	}
 	else if (key == 126)
 	{
